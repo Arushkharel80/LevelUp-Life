@@ -28,7 +28,10 @@ const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onComplete }) 
         <span className={`px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-bold border border-slate-600 ${CATEGORY_COLORS[challenge.category]} text-white shadow-sm`}>
           {challenge.category}
         </span>
-        <span className="text-xs font-mono font-bold text-emerald-400">+{challenge.xpReward} XP</span>
+        <div className="flex flex-col items-end gap-1">
+          <span className="text-xs font-mono font-bold text-emerald-400">+{challenge.xpReward} XP</span>
+          <span className="text-[10px] font-mono font-bold text-blue-400">+{challenge.gemReward} Gems</span>
+        </div>
       </div>
 
       <h3 className="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">{challenge.title}</h3>

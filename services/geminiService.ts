@@ -20,9 +20,9 @@ export const generateNewChallenges = async (user: UserProfile): Promise<Challeng
     - Unlocked Difficulty Tiers: ${user.unlockedTiers.join(', ')}
 
     Guidelines:
-    1. Adjust difficulty based on unlocked tiers: ${user.unlockedTiers.join(', ')}.
-    2. Respect the time of day: If it's morning, suggest high-energy/productivity tasks. If it's night, suggest calming/reflection tasks.
-    3. Scale rewards based on complexity (Beginner: 50-100XP, Intermediate: 150-300XP, Advanced: 350-600XP, Legendary: 1000XP+).
+    1. Adjust difficulty based on unlocked tiers.
+    2. Respect the time of day: If it's morning, suggest high-energy tasks. Night, suggest calming tasks.
+    3. Include a 'gemReward' (currency) alongside 'xpReward'. Gems should be roughly 10-20% of the XP amount.
     4. Ensure challenges are actionable and "real-world" compatible.
   `;
 
@@ -42,6 +42,7 @@ export const generateNewChallenges = async (user: UserProfile): Promise<Challeng
               taskDetails: { type: Type.STRING },
               timeRequired: { type: Type.STRING },
               xpReward: { type: Type.NUMBER },
+              gemReward: { type: Type.NUMBER },
               category: { 
                 type: Type.STRING,
                 description: 'Must be one of: Fitness, Productivity, Personal Growth, Wellness, Creativity'
@@ -51,7 +52,7 @@ export const generateNewChallenges = async (user: UserProfile): Promise<Challeng
                 description: 'Must be one of: Beginner, Intermediate, Advanced, Legendary'
               }
             },
-            required: ['title', 'description', 'taskDetails', 'timeRequired', 'xpReward', 'category', 'difficulty']
+            required: ['title', 'description', 'taskDetails', 'timeRequired', 'xpReward', 'gemReward', 'category', 'difficulty']
           }
         }
       }

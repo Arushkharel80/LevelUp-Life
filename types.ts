@@ -11,6 +11,7 @@ export interface UserGoal {
   id: string;
   label: string;
   category: ActivityCategory;
+  isCustom?: boolean;
 }
 
 export interface Challenge {
@@ -20,6 +21,7 @@ export interface Challenge {
   taskDetails: string;
   timeRequired: string;
   xpReward: number;
+  gemReward: number;
   category: ActivityCategory;
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced' | 'Legendary';
   completed: boolean;
@@ -30,21 +32,23 @@ export interface UserProfile {
   name: string;
   level: number;
   xp: number;
+  gems: number;
   totalXp: number;
   goals: UserGoal[];
   preferences: string[];
   history: Challenge[];
   unlockedAvatars: string[];
   currentAvatar: string;
-  unlockedTiers: string[]; // e.g., ['Beginner', 'Intermediate']
+  unlockedTiers: string[];
+  aura: string; // Current cosmetic aura
+  unlockedAuras: string[];
 }
 
-export interface Quest {
+export interface ShopItem {
   id: string;
-  title: string;
-  type: 'Daily' | 'Weekly';
+  name: string;
   description: string;
-  requirement: number;
-  progress: number;
-  xpReward: number;
+  cost: number;
+  type: 'aura' | 'skin' | 'booster';
+  value: string;
 }
